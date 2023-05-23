@@ -71,6 +71,7 @@ import com.example.horizontalpager.Calc
 import com.example.horizontalpager.Calendar
 import com.example.horizontalpager.Notepad
 import com.example.horizontalpager.R
+import com.example.horizontalpager.Settings
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 
@@ -82,6 +83,7 @@ sealed class Page {
     object Notepad : Page()
     object Calendar : Page()
     object Calc : Page()
+    object Settings: Page()
     }
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -89,7 +91,7 @@ sealed class Page {
 fun MainScreen() {
     val pagerState = rememberPagerState()
     val matrix = remember { ColorMatrix() }
-    val pages = listOf(Page.Notepad,Page.Calendar,Page.Calc)
+    val pages = listOf(Page.Notepad,Page.Calendar,Page.Calc,Page.Settings)
 
 Column(modifier = Modifier
     .fillMaxSize(),
@@ -112,6 +114,7 @@ Column(modifier = Modifier
                 Page.Calendar -> Calendar()
                 Page.Calc -> Calc()
                 Page.Notepad -> Notepad()
+                Page.Settings -> Settings()
 
             }
 

@@ -11,7 +11,7 @@ import androidx.compose.ui.res.painterResource
 @Composable
 fun Notepad() {
     Column(modifier = Modifier.fillMaxSize()) {
-       Image(painter = painterResource(id = R.drawable.notepad), contentDescription = "notepad" )
+
 
     }
 }
