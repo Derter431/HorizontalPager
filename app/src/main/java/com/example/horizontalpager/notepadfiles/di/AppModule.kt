@@ -5,6 +5,10 @@ import androidx.room.Room
 import com.example.horizontalpager.notepadfiles.data.data_source.NoteDatabase
 import com.example.horizontalpager.notepadfiles.data.repository.NoteRepositoryImpl
 import com.example.horizontalpager.notepadfiles.domain.repository.NoteRepository
+import com.example.horizontalpager.notepadfiles.domain.use_case.AddNote
+import com.example.horizontalpager.notepadfiles.domain.use_case.DeleteNote
+import com.example.horizontalpager.notepadfiles.domain.use_case.GetNotes
+import com.example.horizontalpager.notepadfiles.domain.use_case.NoteUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,4 +35,15 @@ object AppModule {
     fun provideNoteRepository(db: NoteDatabase): NoteRepository {
         return NoteRepositoryImpl(db.noteDao)
     }
+
+    @Provides
+    @Singleton
+    fun provideNoteUseCases(repository: NoteRepository): NoteUseCases {
+        return NoteUseCases(
+            getNotes = GetNotes(repository),
+            deleteNote = DeleteNote(repository),
+            addNote = AddNote(repository)
+        )
+    }
+
 }
