@@ -1,4 +1,4 @@
-package com.example.horizontalpager
+package com.example.horizontalpager.notepadfiles.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

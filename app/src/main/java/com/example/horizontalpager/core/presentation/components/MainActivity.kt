@@ -1,4 +1,4 @@
-package com.example.horizontalpager
+package com.example.horizontalpager.core.presentation.components
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
