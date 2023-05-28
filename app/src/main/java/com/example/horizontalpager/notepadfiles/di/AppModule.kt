@@ -7,6 +7,7 @@ import com.example.horizontalpager.notepadfiles.data.repository.NoteRepositoryIm
 import com.example.horizontalpager.notepadfiles.domain.repository.NoteRepository
 import com.example.horizontalpager.notepadfiles.domain.use_case.AddNote
 import com.example.horizontalpager.notepadfiles.domain.use_case.DeleteNote
+import com.example.horizontalpager.notepadfiles.domain.use_case.GetNote
 import com.example.horizontalpager.notepadfiles.domain.use_case.GetNotes
 import com.example.horizontalpager.notepadfiles.domain.use_case.NoteUseCases
 import dagger.Module
@@ -42,7 +43,8 @@ object AppModule {
         return NoteUseCases(
             getNotes = GetNotes(repository),
             deleteNote = DeleteNote(repository),
-            addNote = AddNote(repository)
+            addNote = AddNote(repository),
+            getNote = GetNote(repository)
         )
     }
 

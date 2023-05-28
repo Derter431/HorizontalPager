@@ -43,13 +43,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.horizontalpager.notepadfiles.presentation.notes.components.NoteItem
 import com.example.horizontalpager.notepadfiles.presentation.notes.components.OrderSection
+import com.example.horizontalpager.notepadfiles.presentation.util.Screen
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun NoteScreen(
+fun NotesScreen(
     navController: NavController,
     viewModel: NotesViewModel = hiltViewModel()
 
@@ -62,6 +63,7 @@ fun NoteScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
+                          navController.navigate(Screen.AddEditNoteScreen.route)
 
             },
             containerColor = Color.Magenta
@@ -126,6 +128,10 @@ fun NoteScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
+                                       navController.navigate(
+                                           Screen.AddEditNoteScreen.route +
+                                                   "?noteId=${note.id}&noteColor=${note.color}"
+                                       )
 
                             },
                         onDeleteClick = {
